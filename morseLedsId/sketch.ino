@@ -52,9 +52,13 @@ void loop(){
 }
 
 //Establezco q "." = 200ms y "-" = a 600ms.
+
+//Toma cada elemento del string de números y lo itera por cada caracter.
+//Se podría hacer con números o una lista con cada caracter, pero es un paso adicional
 void mostrarMorse(String numeros){
   for(int i=0; i < numeros.length(); i++){
     char digito = numeros[i];
+//Se extrae el primer elemento del String (un dígito) y se obtiene su equivalente en Morse.
     String morse = convertirAMorse(digito);
     
     Serial.print("Morse de ");
@@ -62,8 +66,10 @@ void mostrarMorse(String numeros){
     Serial.print(": ");
     Serial.println(morse);
 
+
     for(int j=0; j < morse.length(); j++){
       if(morse[j] == '.'){
+        //Llama la función
         encenderLeds(200); // punto corto
       } else if(morse[j] == '-'){
         encenderLeds(600); // raya larga
@@ -74,6 +80,7 @@ void mostrarMorse(String numeros){
   }
 }
 
+//Sentencia Switch, más intuitivo y a veces mejor que usar muchos condicionales if/else if
 String convertirAMorse(char digito){
   switch(digito){
     case '0': return "-----";
@@ -90,7 +97,9 @@ String convertirAMorse(char digito){
   }
 }
 
+//Funciones abstraídas de C++ simplificado que generan las lucesitas de las led.
 void encenderLeds(int duracion){
+  //parámetros de digitalWrite(Tiempo en ms, paso de energía)
   digitalWrite(led1, HIGH);
   digitalWrite(led2, HIGH);
   digitalWrite(led3, HIGH);
