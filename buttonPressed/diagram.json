@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "author": "David McEwen",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 70.6,
+      "left": 173,
+      "rotate": 180,
+      "attrs": { "color": "red", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:2.l", "esp:5V", "green", [ "h28.8", "v201.4", "h-345.6", "v-96" ] ],
+    [ "btn1:1.r", "esp:18", "green", [ "v0", "h-38.6", "v19.2" ] ],
+    [ "esp:GND.1", "btn1:1.l", "black", [ "h-52.61", "v96", "h288" ] ]
+  ],
+  "dependencies": {}
+}
